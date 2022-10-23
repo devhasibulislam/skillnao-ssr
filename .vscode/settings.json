@@ -1,5 +1,11 @@
 {
-  "cSpell.words": ["Hasib", "Hasibul"],
+  "cSpell.words": [
+    "Hasib",
+    "Hasibul",
+    "middlewares",
+    "Nodemailer",
+    "signin"
+  ],
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
