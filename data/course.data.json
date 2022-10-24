@@ -1,0 +1,22 @@
+[
+  {
+    "title": "student will learn",
+    "category": "creative",
+    "about": "A course description serves to state the rationale for the course and give an overview of key content covered, skills and knowledge to be learned, and how it will benefit the student. It may include learning strategies and major activities, if it would be a significant factor in a student deciding whether to take the course or not.",
+    "description": {
+      "reason": "BEFORE: This course introduces the computer as a fine arts tool, and provides an overview of digital arts concepts and terminology. Students will solve design problems using a variety of computer software applications. Critical awareness of new media in a historical context is encouraged through lectures, discussion and critiques. Offered fall and spring semesters.",
+      "purpose": "AFTER: Introduces the computer as a fine arts tool, and provides an overview of digital arts concepts and terminology. Engages in critical awareness of new media in a historical context through lectures, discussion and critiques. Students will have an opportunity to solve design problems using a variety of computer software applications."
+    },
+    "price": 5050
+  },
+  {
+    "title": "creating an online courses",
+    "category": "creative",
+    "about": "It's all too easy to fall into the trap of writing dry course descriptions that 'tick all the boxes.' But if you want to captivate, create excitement and curiosity, and ultimately make students want to take or purchase your courses, you'll need to write a course description that leaves your prospects eager to sign up.",
+    "description": {
+      "reason": "This is a simplistic description and rather open-ended, but there is a reason for that. There are many types of online courses that target a variety of levels of competence and types of customers/employees. For example, a general interest course on 'how to knit a jumper' will probably not have the same course description format, tone, and writing style as an online degree program from a recognized institution of higher education, but they will have similar types of information.",
+      "purpose": "So, it will be helpful to break down the course description into specific areas of content - some of these would be considered 'mandatory,' while others can be included or left out as needed. For example, if you're going to place your course on a course selling platform like iSpring Market to sell it online, you will be asked to add a course topic, course format, an author's bio, and some other information to 'build out' your course description."
+    },
+    "price": 7569
+  }
+]
