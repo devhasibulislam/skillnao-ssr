@@ -40,3 +40,15 @@ exports.getMe = async (data) => {
   const result = await User.findOne({ email: data });
   return result;
 };
+
+/* update specific user info */
+exports.updateSpecificUser = async (id, data) => {
+  const result = await User.findByIdAndUpdate(id, data);
+  return result;
+};
+
+/* remove specific user */
+exports.removeSpecificUser = async (id) => {
+  const result = await User.findByIdAndDelete(id);
+  return result;
+};
