@@ -14,6 +14,7 @@ const errorHandlerMiddleware = require("./middlewares/errorHandler.middleware");
 
 /* router level imports */
 const userRoute = require("./routes/user.route");
+const courseRoute = require("./routes/course.route");
 
 /* application level connections */
 const app = express();
@@ -24,6 +25,7 @@ app.use(express.json());
 
 /* router level connections */
 app.use("/user", userRoute);
+app.use("/course", courseRoute);
 
 /* global error handlers */
 app.use(errorHandlerMiddleware);
