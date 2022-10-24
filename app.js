@@ -22,6 +22,7 @@ const app = express();
 /* middlewares connections */
 app.use(cors());
 app.use(express.json());
+app.use(express.static(__dirname + "/thumbnails/"));
 
 /* router level connections */
 app.use("/user", userRoute);
