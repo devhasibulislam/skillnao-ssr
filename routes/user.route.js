@@ -18,5 +18,9 @@ router.get(
 router.post("/signup", userController.signUpNewUser);
 router.post("/signin", userController.signInExistingUser);
 router.get("/me", verifyTokenMiddleware, userController.getMe);
+router
+  .route("/:id", verifyTokenMiddleware, authorizedRoleMiddleware("admin"))
+  .patch(userController.updateSpecificUser)
+  .delete(userController.removeSpecificUser);
 
 module.exports = router;
