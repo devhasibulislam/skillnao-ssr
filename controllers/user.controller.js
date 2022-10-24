@@ -1,22 +1,6 @@
 /* internal import */
 const userService = require("../services/user.service");
 
-/* retain a user after login based token expiry */
-exports.getMe = async (req, res, next) => {
-  try {
-    const result = await User.findOne({ email: req.user.email });
-
-    res.status(200).json({
-      acknowledgement: true,
-      message: "User retained",
-      description: "User logged in already",
-      data: result,
-    });
-  } catch (error) {
-    next(error);
-  }
-};
-
 /* display all users */
 exports.displayAllUsers = async (req, res, next) => {
   try {
@@ -59,6 +43,23 @@ exports.signInExistingUser = async (req, res, next) => {
       message: "Accepted",
       description: "User signed in successfully",
       redirect: true,
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/* retain a user after login based token expiry */
+exports.getMe = async (req, res, next) => {
+  try {
+    const { email } = req.user;
+    const result = await userService.getMe(email);
+
+    res.status(200).json({
+      acknowledgement: true,
+      message: "User retained",
+      description: "User logged in already",
       data: result,
     });
   } catch (error) {
