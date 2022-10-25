@@ -67,6 +67,41 @@ exports.getMe = async (req, res, next) => {
   }
 };
 
+/* display transaction user */
+exports.displayTransactionUser = async (req, res, next) => {
+  try {
+    const result = await userService.displayTransactionUser(req.params.id);
+
+    res.status(200).json({
+      acknowledgement: true,
+      message: "OK",
+      description: "Successfully fetch transaction user information",
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/* interact with transaction ID */
+exports.interactWithTransaction = async (req, res, next) => {
+  try {
+    const result = await userService.interactWithTransaction(
+      req.params.id,
+      req.body
+    );
+
+    res.status(202).json({
+      acknowledgement: true,
+      message: "Accepted",
+      description: "Successfully upsert transaction information",
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 /* update specific user */
 exports.updateSpecificUser = async (req, res, next) => {
   try {
