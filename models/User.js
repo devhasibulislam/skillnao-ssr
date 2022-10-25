@@ -49,10 +49,18 @@ const userSchema = mongoose.Schema(
       },
       default: "user",
     },
-    trnxID: {
-      type: String,
-      default: "xxxxxxxxxx"
-    },
+    transactionInfo: [
+      {
+        transactionID: {
+          type: String,
+          default: "xxxxxxxxxx",
+        },
+        courseID: {
+          type: mongoose.Schema.Types.ObjectId,
+          ref: "Course",
+        },
+      },
+    ],
     createdAt: {
       type: Date,
       default: Date.now,
