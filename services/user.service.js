@@ -41,9 +41,27 @@ exports.getMe = async (data) => {
   return result;
 };
 
+/* display transaction user info */
+exports.displayTransactionUser = async (id) => {
+  const result = await User.findById(id)?.populate({
+    path: "transactionInfo.courseID",
+    select: "title category price status",
+  });
+  return result;
+};
+
+/* interact with transaction ID */
+exports.interactWithTransaction = async (id, data) => {
+  console.log(data);
+  const result = await User.findByIdAndUpdate(id, { $push: data });
+  return result;
+};
+
 /* update specific user info */
 exports.updateSpecificUser = async (id, data) => {
-  const result = await User.findByIdAndUpdate(id, data);
+  const result = await User.findByIdAndUpdate(id, data, {
+    runValidators: true,
+  });
   return result;
 };
 
