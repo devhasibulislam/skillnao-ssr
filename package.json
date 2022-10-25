@@ -5,8 +5,8 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "development": "NODE_ENV=development nodemon server",
-    "production": "NODE_ENV=production node server"
+    "development": "NODE_ENV=development nodemon index.js",
+    "production": "NODE_ENV=production node index.js"
   },
   "repository": "https://github.com/hasibulislam999/skillnao-ssr",
   "author": "Hasibul Islam",
