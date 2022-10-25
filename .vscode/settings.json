@@ -5,7 +5,9 @@
     "Hasibul",
     "middlewares",
     "Nodemailer",
-    "signin"
+    "signin",
+    "trnx",
+    "Trxn"
   ],
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
