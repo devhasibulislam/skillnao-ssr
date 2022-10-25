@@ -49,6 +49,10 @@ const userSchema = mongoose.Schema(
       },
       default: "user",
     },
+    trnxID: {
+      type: String,
+      default: "xxxxxxxxxx"
+    },
     createdAt: {
       type: Date,
       default: Date.now,
