@@ -8,22 +8,17 @@ const packageSchema = mongoose.Schema(
       required: [true, "Please, provide a course title"],
       unique: [true, "Title already exists"],
       trim: true,
-      minLength: [10, "Short description won't be less than 200 characters"],
-      maxLength: [100, "Short description won't be more than 300 characters"],
     },
     category: {
       type: String,
       required: [true, "Please, provide a course category"],
       trim: true,
       lowercase: true,
-      maxLength: [50, "Category name won't be more than 50 characters"],
     },
     about: {
       type: String,
       required: [true, "Please, provide a short description for your course"],
       trim: true,
-      minLength: [50, "Short description won't be less than 50 characters"],
-      maxLength: [500, "Short description won't be more than 500 characters"],
     },
     thumbnail: {
       type: String,
@@ -35,21 +30,11 @@ const packageSchema = mongoose.Schema(
         type: String,
         required: [true, "Please, provide course description"],
         trim: true,
-        minLength: [100, "Short description won't be less than 100 characters"],
-        maxLength: [
-          1000,
-          "Short description won't be more than 1000 characters",
-        ],
       },
       purpose: {
         type: String,
         required: [true, "Please, provide course description"],
         trim: true,
-        minLength: [100, "Short description won't be less than 100 characters"],
-        maxLength: [
-          1000,
-          "Short description won't be more than 1000 characters",
-        ],
       },
     },
     price: {
