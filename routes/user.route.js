@@ -19,8 +19,28 @@ router.post("/signup", userController.signUpNewUser);
 router.post("/signin", userController.signInExistingUser);
 router.get("/me", verifyTokenMiddleware, userController.getMe);
 router
-  .route("/:id", verifyTokenMiddleware, authorizedRoleMiddleware("admin"))
-  .patch(userController.updateSpecificUser)
-  .delete(userController.removeSpecificUser);
+  .route("/transaction/:id")
+  .get(
+    verifyTokenMiddleware,
+    authorizedRoleMiddleware("user", "admin"),
+    userController.displayTransactionUser
+  )
+  .patch(
+    verifyTokenMiddleware,
+    authorizedRoleMiddleware("user"),
+    userController.interactWithTransaction
+  );
+router
+  .route("/:id")
+  .patch(
+    verifyTokenMiddleware,
+    authorizedRoleMiddleware("admin"),
+    userController.updateSpecificUser
+  )
+  .delete(
+    verifyTokenMiddleware,
+    authorizedRoleMiddleware("admin"),
+    userController.removeSpecificUser
+  );
 
 module.exports = router;
