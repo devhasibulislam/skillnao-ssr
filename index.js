@@ -14,7 +14,7 @@ const app = require("./app");
 
 /* database connection */
 mongoose
-  .connect(process.env.DB_LOCAL, {
+  .connect(process.env.DB_URI, {
     dbName: "skill-nao",
     useNewUrlParser: true,
     useUnifiedTopology: true,
