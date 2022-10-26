@@ -9,7 +9,7 @@ const multer = require("multer");
 const path = require("path");
 
 const storage = multer.diskStorage({
-  destination: "thumbnails/",
+  destination: "public/uploads/",
   filename: (req, file, cb) => {
     const uniqueSuffix = Date.now() + "_" + Math.round(Math.random() * 1e9);
     cb(null, uniqueSuffix + "-" + file.originalname);
