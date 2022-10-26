@@ -1,4 +1,5 @@
 /* internal import */
+const fs = require("fs");
 const Course = require("../models/Course");
 
 /* display all courses */
@@ -22,5 +23,6 @@ exports.displaySpecificCourse = async (id) => {
 /* remove specific course */
 exports.removeSpecificCourse = async (id) => {
   const result = await Course.findByIdAndDelete(id);
+  fs.unlinkSync(`${__dirname}/../thumbnails/${result.thumbnail}`);
   return result;
 };

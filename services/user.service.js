@@ -52,7 +52,6 @@ exports.displayTransactionUser = async (id) => {
 
 /* interact with transaction ID */
 exports.interactWithTransaction = async (id, data) => {
-  console.log(data);
   const result = await User.findByIdAndUpdate(id, { $push: data });
   return result;
 };
