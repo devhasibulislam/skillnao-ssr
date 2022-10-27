@@ -20,7 +20,7 @@ const courseRoute = require("./routes/course.route");
 const app = express();
 
 /* middlewares connections */
-app.use();
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
