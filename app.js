@@ -20,10 +20,13 @@ const courseRoute = require("./routes/course.route");
 const app = express();
 
 /* middlewares connections */
-app.use(cors({
-  origin: "https://skillnao-csr.vercel.app"
-}));
+app.use(
+  cors({
+    origin: "https://skillnao-csr.vercel.app",
+  })
+);
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static(__dirname + "/public"));
 
 /* router level connections */
