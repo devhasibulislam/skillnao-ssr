@@ -20,7 +20,9 @@ const courseRoute = require("./routes/course.route");
 const app = express();
 
 /* middlewares connections */
-app.use(cors());
+app.use(cors({
+  origin: "https://skillnao-ssr.onrender.com/"
+}));
 app.use(express.json());
 app.use(express.static(__dirname + "/public"));
 
