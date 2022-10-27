@@ -1,7 +1,4 @@
 node_modules
+public/uploads
 .env
-thumbnails
-tmp/tmp-1-1666892137891
-tmp/tmp-1-1666892237171
-tmp/tmp-1-1666892430664
-tmp/tmp-2-1666892281129
+tmp
