@@ -23,6 +23,6 @@ exports.displaySpecificCourse = async (id) => {
 /* remove specific course */
 exports.removeSpecificCourse = async (id) => {
   const result = await Course.findByIdAndDelete(id);
-  fs.unlinkSync(`${__dirname}/../thumbnails/${result.thumbnail}`);
+  fs.unlinkSync(`${__dirname}/../public/uploads/${result.thumbnail}`);
   return result;
 };

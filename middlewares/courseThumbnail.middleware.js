@@ -19,7 +19,7 @@ const storage = multer.diskStorage({
 module.exports = multer({
   storage,
   fileFilter: (req, file, cb) => {
-    const supportedImage = /PNG|png|JPEG|jpeg|JPG|jpg|WEBP|webp|svg|SVG/gi;
+    const supportedImage = /PNG|png|JPEG|jpeg|JPG|jpg|WEBP|webp|svg|SVG/;
     const extension = path.extname(file.originalname);
 
     if (supportedImage.test(extension)) {
