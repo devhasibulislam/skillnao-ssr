@@ -8,6 +8,7 @@
 /* external imports */
 const express = require("express");
 const cors = require("cors");
+const fileUpload = require("express-fileupload");
 
 /* internal imports */
 const errorHandlerMiddleware = require("./middlewares/errorHandler.middleware");
@@ -20,6 +21,16 @@ const courseRoute = require("./routes/course.route");
 const app = express();
 
 /* middlewares connections */
+app.use(
+  fileUpload({
+    useTempFiles: true,
+    safeFileNames: /jpg|jpeg|png/i,
+    preserveExtension: 3 || 4,
+    limits: {
+      fieldSize: 1024,
+    },
+  })
+);
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
