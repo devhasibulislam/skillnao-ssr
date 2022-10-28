@@ -26,18 +26,24 @@ router.post(
   async (req, res, next) => {
     try {
       const file = req.files.thumbnail;
-      cloudinary.uploader.upload(file.tempFilePath, (error, result) => {
-        if (!error) {
-          res.status(201).json({
-            acknowledgement: true,
-            message: "Created",
-            description: "Avatar successfully uploaded",
-            data: result,
-          });
-        } else {
-          next(error);
+      cloudinary.uploader.upload(
+        file.tempFilePath,
+        {
+          folder: "courses",
+        },
+        (error, result) => {
+          if (!error) {
+            res.status(201).json({
+              acknowledgement: true,
+              message: "Created",
+              description: "Avatar successfully uploaded",
+              data: result,
+            });
+          } else {
+            next(error);
+          }
         }
-      });
+      );
     } catch (error) {
       next(error);
     }
