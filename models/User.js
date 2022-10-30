@@ -23,11 +23,7 @@ const userSchema = mongoose.Schema(
       validate: {
         validator: (value) =>
           validator.isStrongPassword(value, {
-            minLength: 8,
-            minLowercase: 1,
-            minNumbers: 1,
-            minUppercase: 1,
-            minSymbols: 1,
+            minLength: 6,
           }),
         message: "Password {VALUE} is not strong enough, retry",
       },

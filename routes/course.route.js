@@ -60,11 +60,7 @@ router
   );
 router
   .route("/:id")
-  .get(
-    verifyTokenMiddleware,
-    authorizedRoleMiddleware("admin", "user"),
-    courseController.displaySpecificCourse
-  )
+  .get(courseController.displaySpecificCourse)
   .delete(
     verifyTokenMiddleware,
     authorizedRoleMiddleware("admin"),
