@@ -12,8 +12,12 @@ const packageSchema = mongoose.Schema(
     category: {
       type: String,
       required: [true, "Please, provide a course category"],
+      enum: {
+        values: ["academic", "professional", "job-related"],
+        message:
+          "{VALUE} is not a valid category, try academic/professional/job-related",
+      },
       trim: true,
-      lowercase: true,
     },
     about: {
       type: String,
