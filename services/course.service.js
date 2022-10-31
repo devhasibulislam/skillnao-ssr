@@ -20,6 +20,12 @@ exports.displaySpecificCourse = async (id) => {
   return result;
 };
 
+/* update specific course */
+exports.updateSpecificCourse = async (id, data) => {
+  const result = await Course.findByIdAndUpdate(id, data);
+  return result;
+};
+
 /* remove specific course */
 exports.removeSpecificCourse = async (id) => {
   const result = await Course.findByIdAndDelete(id);
