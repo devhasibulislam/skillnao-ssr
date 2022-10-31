@@ -63,6 +63,25 @@ exports.displaySpecificCourse = async (req, res, next) => {
   }
 };
 
+/* update specific course */
+exports.updateSpecificCourse = async (req, res, next) => {
+  try {
+    const result = await courseService.updateSpecificCourse(
+      req.params.id,
+      req.body
+    );
+
+    res.status(202).json({
+      acknowledgement: true,
+      message: "Accepted",
+      description: "Update specific course from DB",
+      data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 /* remove specific course */
 exports.removeSpecificCourse = async (req, res, next) => {
   try {
