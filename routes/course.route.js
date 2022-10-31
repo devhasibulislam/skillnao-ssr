@@ -5,7 +5,7 @@ const cloudinary = require("cloudinary").v2;
 /* internal import */
 const courseController = require("../controllers/course.controller");
 const authorizedRoleMiddleware = require("../middlewares/authorizedRole.middleware");
-const courseThumbnailMiddleware = require("../middlewares/courseThumbnail.middleware");
+// const courseThumbnailMiddleware = require("../middlewares/courseThumbnail.middleware");
 const verifyTokenMiddleware = require("../middlewares/verifyToken.middleware");
 
 /* cloudinary config */
