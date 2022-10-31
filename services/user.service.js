@@ -6,8 +6,14 @@ const User = require("../models/User");
 const { getToken } = require("../utils/token.util");
 
 /* display all users */
+/**
+ * Nested populate
+ * https://www.reddit.com/r/node/comments/9hhd11/mongoose_how_to_populate_nested_schemas_with/
+ */
 exports.displayAllUsers = async () => {
-  const result = User.find().sort([["updatedAt", -1]]);
+  const result = User.find()
+    .sort([["updatedAt", -1]])
+    .populate("transactionInfo.courseID");
   return result;
 };
 
@@ -37,7 +43,9 @@ exports.signInExistingUser = async (data) => {
 
 /* retain a user after login based token expiry */
 exports.getMe = async (data) => {
-  const result = await User.findOne({ email: data });
+  const result = await User.findOne({ email: data }).populate(
+    "transactionInfo.courseID"
+  );
   return result;
 };
 

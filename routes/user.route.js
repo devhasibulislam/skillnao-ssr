@@ -12,7 +12,7 @@ const router = express.Router();
 router.get(
   "/all",
   verifyTokenMiddleware,
-  authorizedRoleMiddleware("admin"),
+  authorizedRoleMiddleware("admin", "user"),
   userController.displayAllUsers
 );
 router.post("/signup", userController.signUpNewUser);
