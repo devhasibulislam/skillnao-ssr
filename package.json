@@ -5,7 +5,6 @@
   "main": "index.js",
   "type": "commonjs",
   "scripts": {
-    "dev": "nodemon index.js",
     "start": "node index.js"
   },
   "repository": "https://github.com/hasibulislam999/skillnao-ssr",
