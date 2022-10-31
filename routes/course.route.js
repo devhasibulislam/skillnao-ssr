@@ -61,6 +61,11 @@ router
 router
   .route("/:id")
   .get(courseController.displaySpecificCourse)
+  .patch(
+    verifyTokenMiddleware,
+    authorizedRoleMiddleware("admin"),
+    courseController.updateSpecificCourse
+  )
   .delete(
     verifyTokenMiddleware,
     authorizedRoleMiddleware("admin"),
