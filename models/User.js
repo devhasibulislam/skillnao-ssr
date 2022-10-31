@@ -20,13 +20,7 @@ const userSchema = mongoose.Schema(
     password: {
       type: String,
       required: [true, "Please, provide strong password"],
-      validate: {
-        validator: (value) =>
-          validator.isStrongPassword(value, {
-            minLength: 6,
-          }),
-        message: "Password {VALUE} is not strong enough, retry",
-      },
+      minLength: [6, "Password would be at least 6 characters"],
     },
     whatsApp: {
       type: String,
