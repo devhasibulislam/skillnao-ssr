@@ -7,7 +7,7 @@ const { getToken } = require("../utils/token.util");
 
 /* display all users */
 exports.displayAllUsers = async () => {
-  const result = User.find();
+  const result = User.find().sort([["updatedAt", -1]]);
   return result;
 };
 
