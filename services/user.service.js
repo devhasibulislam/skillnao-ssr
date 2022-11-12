@@ -4,6 +4,18 @@ const bcrypt = require("bcryptjs");
 /* internal import */
 const User = require("../models/User");
 const { getToken } = require("../utils/token.util");
+const emailUtil = require("../utils/confirm.util");
+
+/* confirmation email utility */
+function confirmByEmail(email, token, protocol, host, slug) {
+  emailUtil(email, token, protocol, host, slug);
+}
+
+/* check expire utility */
+function isExpire(date) {
+  const expired = new Date() > new Date(date);
+  return expired;
+}
 
 /* display all users */
 /**
@@ -18,10 +30,32 @@ exports.displayAllUsers = async () => {
 };
 
 /* sign up an user */
-exports.signUpNewUser = async (data) => {
+exports.signUpNewUser = async (data, protocol, host) => {
   const user = new User(data);
+  const token = user.generateCredentialToken("signup");
+
+  await user.save({ validateBeforeSave: false });
+  confirmByEmail(user.email, token, protocol, host, "signup");
+
   const result = await user.save();
   return result;
+};
+
+/* confirm signed up user */
+exports.confirmSignedUpUser = async (token) => {
+  const user = await User.findOne({ confirmationToken: token });
+  const expired = isExpire(user.confirmationTokenExpires);
+
+  if (expired) {
+    return { acknowledgement: false };
+  }
+
+  user.status = "active";
+  user.confirmationToken = undefined;
+  user.confirmationTokenExpires = undefined;
+  user.save({ validateBeforeSave: false });
+
+  return user;
 };
 
 /* sign in an user */

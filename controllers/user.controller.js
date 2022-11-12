@@ -20,13 +20,46 @@ exports.displayAllUsers = async (req, res, next) => {
 /* sign up an user */
 exports.signUpNewUser = async (req, res, next) => {
   try {
-    const result = await userService.signUpNewUser(req.body);
+    const result = await userService.signUpNewUser(
+      req.body,
+      req.protocol,
+      req.get("host")
+    );
 
     res.status(201).json({
       acknowledgement: true,
       message: "Created",
       description: "User signed up successfully",
       data: result,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
+/* confirm signed up user */
+exports.confirmSignedUpUser = async (req, res, next) => {
+  try {
+    const user = await userService.confirmSignedUpUser(req.query.token);
+
+    if (user.acknowledgement === false) {
+      return res.status(401).json({
+        acknowledgement: false,
+        message: "Unauthorized",
+        description: "Email provided token expired. Please, retry",
+      });
+    }
+
+    res.status(200).json({
+      acknowledgement: true,
+      message: "OK",
+      description: "Account activated, ready to go",
+      data: {
+        name: user.name,
+        email: user.email,
+        phone: user.phone,
+        role: user.role,
+      },
     });
   } catch (error) {
     next(error);

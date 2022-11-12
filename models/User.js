@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
 const validator = require("validator");
 
@@ -51,6 +52,23 @@ const userSchema = mongoose.Schema(
         },
       },
     ],
+
+    // for user account status
+    /**
+     * active: verified account
+     * inactive: not verified account
+     * blocked: account deleted
+     */
+    status: {
+      type: String,
+      enum: ["active", "inactive", "blocked"],
+      default: "inactive",
+    },
+
+    // for user account confirmation token
+    confirmationToken: String,
+    confirmationTokenExpires: Date,
+
     createdAt: {
       type: Date,
       default: Date.now,
@@ -77,6 +95,32 @@ userSchema.pre("save", async function (next) {
     next(error);
   }
 });
+
+/* generate new user account credential token */
+userSchema.methods.generateCredentialToken = function (slug) {
+  // generate random token
+  const token = crypto.randomBytes(16).toString("hex");
+
+  //   initialize & set up an expiry date <= 1 day
+  const date = new Date();
+  date.setDate(date.getDate() + 1);
+
+  if (slug === "signup") {
+    //   insert token to the confirmation token field
+    this.confirmationToken = token;
+
+    // insert expiry to the confirmation token expiry field
+    this.confirmationTokenExpires = date;
+  } else if (slug === "reset-password") {
+    //   insert token to the password reset token field
+    this.passwordResetToken = token;
+
+    // insert expiry to the password reset token expiry filed
+    this.passwordResetTokenExpires = date;
+  }
+
+  return token;
+};
 
 userSchema.post("save", async function (next) {
   try {

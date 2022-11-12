@@ -15,7 +15,10 @@ router.get(
   authorizedRoleMiddleware("admin", "user"),
   userController.displayAllUsers
 );
-router.post("/signup", userController.signUpNewUser);
+router
+  .route("/signup")
+  .get(userController.confirmSignedUpUser)
+  .post(userController.signUpNewUser);
 router.post("/signin", userController.signInExistingUser);
 router.get("/me", verifyTokenMiddleware, userController.getMe);
 router
